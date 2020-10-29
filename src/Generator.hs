@@ -182,6 +182,10 @@ profileModuleName feature profile =
       ("GL_VERSION_4_5", "compatibility") -> ("Compatibility45", Nothing)
       ("GL_VERSION_4_5", _) -> ("Core45", Nothing)
 
+      ("GL_VERSION_4_6", "core") -> ("Core46", Just "Compatibility46")
+      ("GL_VERSION_4_6", "compatibility") -> ("Compatibility46", Nothing)
+      ("GL_VERSION_4_6", _) -> ("Core46", Nothing)
+
       ("GL_VERSION_ES_CM_1_0", "common") -> ("EmbeddedCommon11", Nothing)
       ("GL_VERSION_ES_CM_1_0", _) -> ("EmbeddedLite11", Nothing)
 
@@ -247,6 +251,9 @@ implicitPrelude m = case m of
     ]
   "Graphics.GL.Core45" -> mk [
       "Graphics.GL.Core44"
+    ]
+  "Graphics.GL.Core46" -> mk [
+      "Graphics.GL.Core45"
     ]
   "Graphics.GL.EmbeddedCommon11" -> mk [
       "Graphics.GL.EmbeddedLite11"
@@ -397,6 +404,7 @@ modules registry entr = do
       , "Compatibility43"
       , "Compatibility44"
       , "Compatibility45"
+      , "Compatibility46"
       , "Core32"
       , "Core33"
       , "Core40"
@@ -405,6 +413,7 @@ modules registry entr = do
       , "Core43"
       , "Core44"
       , "Core45"
+      , "Core46"
       , "EmbeddedCommon11"
       , "EmbeddedLite11"
       , "Embedded20"
